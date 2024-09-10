@@ -29,12 +29,34 @@ public class UserController {
     public ResponseEntity<?> updateUser(@RequestBody User user) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
+
+        // Fetch the current user from the database
         User userInDb = userService.findByUserName(userName);
-        userInDb.setUserName(user.getUserName());
-        userInDb.setPassword(user.getPassword());
-        userService.saveNewUser(userInDb);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        if (userInDb == null) {
+            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+        }
+
+        // Validate request body fields
+        if (user.getUserName() != null && !user.getUserName().isEmpty()) {
+            userInDb.setUserName(user.getUserName());
+        }
+        if (user.getEmail() != null && !user.getEmail().isEmpty()) {
+            userInDb.setEmail(user.getEmail());
+        }
+        if (user.getPassword() != null && !user.getPassword().isEmpty()) {
+            userInDb.setPassword(user.getPassword());
+        }
+
+        // Save the updated user in the database
+        try {
+            userService.saveNewUser(userInDb);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error updating user: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return new ResponseEntity<>(userInDb, HttpStatus.OK);
     }
+
 
     @DeleteMapping
     public ResponseEntity<?> deleteUserById() {
@@ -46,7 +68,7 @@ public class UserController {
     @GetMapping
     public ResponseEntity<?> greeting() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        WeatherResponse weatherResponse = weatherService.getWeather("Mumbai");
+        WeatherResponse weatherResponse = weatherService.getWeather("Dhaka");
         String greeting = "";
         if (weatherResponse != null) {
             greeting = ", Weather feels like " + weatherResponse.getCurrent().getFeelslike();

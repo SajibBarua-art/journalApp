@@ -1,7 +1,7 @@
 package com.example.journalApp.service;
 
-import net.engineeringdigest.journalApp.entity.User;
-import net.engineeringdigest.journalApp.repository.UserRepository;
+import com.example.journalApp.entity.User;
+import com.example.journalApp.repository.UserRepository;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
@@ -22,12 +22,12 @@ public class UserServiceTests {
     private UserService userService;
 
 
-    @Disabled
-    @ParameterizedTest
-    @ArgumentsSource(UserArgumentsProvider.class)
-    public void testSaveNewUser(User user) {
-        assertTrue(userService.saveNewUser(user));
-    }
+//    @Disabled
+//    @ParameterizedTest
+//    @ArgumentsSource(UserArgumentsProvider.class)
+//    public void testSaveNewUser(User user) {
+//        assertTrue(userService.saveNewUser(user));
+//    }
 
     @Disabled
     @ParameterizedTest

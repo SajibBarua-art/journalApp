@@ -10,7 +10,6 @@ import java.util.List;
 
 public class UserRepositoryImpl {
 
-
     @Autowired
     private MongoTemplate mongoTemplate;
 

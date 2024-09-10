@@ -1,7 +1,7 @@
 package com.example.journalApp.service;
 
-import net.engineeringdigest.journalApp.entity.User;
-import net.engineeringdigest.journalApp.repository.UserRepository;
+import com.example.journalApp.entity.User;
+import com.example.journalApp.repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
