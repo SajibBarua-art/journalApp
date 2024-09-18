@@ -65,7 +65,8 @@ public class UserService {
     }
 
 
-    public void saveAdmin(User user) {
+    public void saveAdmin(String userName) {
+        User user = userRepository.findByUserName(userName);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(Arrays.asList("USER", "ADMIN"));
         userRepository.save(user);
