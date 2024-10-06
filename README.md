@@ -166,20 +166,39 @@ Provide a step-by-step guide to setting up the project locally.
 
    </configuration>
    ```
+10. **Configure the api.weatherstack.com:**
+
+Set up the weatherstack connection in **application.yml**:
+```
+weather:
+ api:
+  key: your_weathestack_api_key
+  ```
+  Set up weathestack set up in **MongoDB**:
+  
+  - create a database named **config_journal_app**
+  - Inside the database post this object:
+  ```
+{
+key:"WEATHER_API"
+value:"http://api.weatherstack.com/current?access_key=<apiKey>&query=<city>"
+}
+  ```
+
 ---
 
 ## Usage
 1. **Firstly, to create a new employee or sign up, navigate to:**
    ```
-   http://localhost:8080/public/signup
+http://localhost:8080/public/signup
    ```
    Into the Postman >> body >> raw >> json, pass them:
    ```
-   {
-       "userName": "Robin",
-       "password": "Robin",
-       "email": "robin@gmail.com",
-   }
+{
+"userName": "Robin",
+"password": "Robin",
+"email": "robin@gmail.com",
+}
 2. **Secondly, to log in, navigate to:**
    ```
    http://localhost:8080/public/login
