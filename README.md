@@ -35,20 +35,27 @@ Example:
 Provide a step-by-step guide to setting up the project locally.
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/SajibBarua-art/Employee-Management-System
    ```
+
 2. **Navigate to the project directory:**
+
    ```bash
    cd Employee-Management-System
    ```
+
 3. **Build your project:** (using Maven)
+
    ```bash
    mvn clear install
    ```
+
 4. **Configure the MongoDB database:**
 
    Set up the database connection in **application.yml** (for Spring Boot projects):
+
    ```
    spring:
     server:
@@ -63,9 +70,11 @@ Provide a step-by-step guide to setting up the project locally.
       database: journaldb
       auto-index-creation: true
    ```
+
 5. **Configure the mail:**
 
    Set up the email connection in **application.yml**:
+
    ```
    spring:
     mail:
@@ -80,9 +89,11 @@ Provide a step-by-step guide to setting up the project locally.
             starttls:
               enable: true
    ```
+
 6. **Configure the Redis:**
 
    Set up the Redis connection in **application.yml**:
+
    ```
    spring:
     redis:
@@ -90,9 +101,11 @@ Provide a step-by-step guide to setting up the project locally.
      port: 15906
      password: your_redis_password
    ```
+
 7. **Configure the Kafka:**
 
    Set up the Kafka connection in **application.yml**:
+
    ```
    spring:
     kafka:
@@ -124,15 +137,18 @@ Provide a step-by-step guide to setting up the project locally.
 8. **Configure the JWT secret key:**
 
    Add the line in **application.properties**:
+
    ```
    jwt:
     util:
      secret:
       key: TaK+HaV^uvCHEFsEVfypW#7g9^k*Z8$V=your_secret_key
    ```
+
 9. **Configure the logback:**
 
    Set up the logback in **logback.xml**:
+
    ```
    <configuration>
 
@@ -168,9 +184,11 @@ Provide a step-by-step guide to setting up the project locally.
 
    </configuration>
    ```
+
 10. **Configure the api.weatherstack.com:**
 
     Set up the weatherstack connection in **application.yml**:
+
     ```
     weather:
       api:
@@ -180,6 +198,7 @@ Provide a step-by-step guide to setting up the project locally.
     Set up weathestack set up in **MongoDB**:
    - create a database named **config_journal_app**
    - Inside the database post this object:
+
     ```
     {
       key:"WEATHER_API"
@@ -195,6 +214,7 @@ Provide a step-by-step guide to setting up the project locally.
    ```http://localhost:8080/public/signup```
 
    Into the Postman >> body >> raw >> json, pass them:
+
    ```
    {
       "userName": "Robin",
@@ -202,18 +222,22 @@ Provide a step-by-step guide to setting up the project locally.
       "email": "robin@gmail.com"
    }
    ```
+
 2. **Secondly, to log in, navigate to:**
 
    ```http://localhost:8080/public/login```
 
    Into the Postman >> body >> raw >> json, pass them:
+
    ```
    {
        "userName": "Robin",
        "password": "robin"
    }
    ```
+
    After succesfull log in, you will get a **Bearer** token.
+
 3. **To set Bearer token in Postman:**
    Postman >> Authorization >> Auth Type >> Bearer Token.
 
