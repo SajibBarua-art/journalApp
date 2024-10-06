@@ -60,10 +60,6 @@ Provide a step-by-step guide to setting up the project locally.
    spring:
     server:
      port: 8080
-    redis:
-     host: redis-15906.c305.ap-south-1-1.ec2.redns.redis-cloud.com
-     port: 15906
-     password: vZ7QJPylyydod1ZMP1aet9y3IoETw2Rn
     data:
      mongodb:
       uri: mongodb+srv://<username>:<password>@cluster0.smd1bmx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
@@ -142,7 +138,7 @@ Provide a step-by-step guide to setting up the project locally.
    jwt:
     util:
      secret:
-      key: TaK+HaV^uvCHEFsEVfypW#7g9^k*Z8$V=your_secret_key
+      key: your_jwt_secret_key
    ```
 
 9. **Configure the logback:**
