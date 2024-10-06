@@ -64,6 +64,7 @@ Provide a step-by-step guide to setting up the project locally.
       auto-index-creation: true
    ```
 5. **Configure the mail:**
+
    Set up the email connection in **application.yml**:
    ```
    spring:
@@ -90,6 +91,7 @@ Provide a step-by-step guide to setting up the project locally.
      password: your_redis_password
    ```
 7. **Configure the Kafka:**
+
    Set up the Kafka connection in **application.yml**:
    ```
    spring:
@@ -168,41 +170,42 @@ Provide a step-by-step guide to setting up the project locally.
    ```
 10. **Configure the api.weatherstack.com:**
 
-Set up the weatherstack connection in **application.yml**:
-```
-weather:
- api:
-  key: your_weathestack_api_key
-  ```
-  Set up weathestack set up in **MongoDB**:
-  
-  - create a database named **config_journal_app**
-  - Inside the database post this object:
-  ```
-{
-key:"WEATHER_API"
-value:"http://api.weatherstack.com/current?access_key=<apiKey>&query=<city>"
-}
-  ```
+    Set up the weatherstack connection in **application.yml**:
+    ```
+    weather:
+      api:
+        key: your_weathestack_api_key
+    ```
+
+    Set up weathestack set up in **MongoDB**:
+   - create a database named **config_journal_app**
+   - Inside the database post this object:
+    ```
+    {
+      key:"WEATHER_API"
+      value:"http://api.weatherstack.com/current?access_key=<apiKey>&query=<city>"
+    }
+    ```
 
 ---
 
 ## Usage
 1. **Firstly, to create a new employee or sign up, navigate to:**
-   ```
-http://localhost:8080/public/signup
-   ```
+
+   ```http://localhost:8080/public/signup```
+
    Into the Postman >> body >> raw >> json, pass them:
    ```
-{
-"userName": "Robin",
-"password": "Robin",
-"email": "robin@gmail.com",
-}
+   {
+      "userName": "Robin",
+      "password": "Robin",
+      "email": "robin@gmail.com"
+   }
+   ```
 2. **Secondly, to log in, navigate to:**
-   ```
-   http://localhost:8080/public/login
-   ```
+
+   ```http://localhost:8080/public/login```
+
    Into the Postman >> body >> raw >> json, pass them:
    ```
    {
