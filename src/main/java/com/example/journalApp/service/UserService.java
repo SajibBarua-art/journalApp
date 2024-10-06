@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -66,7 +67,9 @@ public class UserService {
 
 
     public void saveAdmin(String userName) {
-        User user = userRepository.findByUserName(userName);
+        User user = userRepository.findByUserName(userName)
+                        .orElseThrow(() -> new UsernameNotFoundException("Username not found for: " + userName));
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(Arrays.asList("USER", "ADMIN"));
         userRepository.save(user);
@@ -89,6 +92,9 @@ public class UserService {
     }
 
     public User findByUserName(String userName) {
-        return userRepository.findByUserName(userName);
+        User user = userRepository.findByUserName(userName)
+                .orElseThrow(() -> new UsernameNotFoundException("Username not found for: " + userName));
+
+        return user;
     }
 }
